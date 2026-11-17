@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10233f"><meta name="description" content="Controle pessoal de jornada e banco de horas">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg"><link rel="stylesheet" href="style.css">
+<title>Meu Banco de Horas AI</title>
+</head>
+<body>
+<header><div class="brand"><div class="logo">⏱</div><div><b>Meu Banco de Horas AI</b><small>Seu controle de jornada</small></div></div><button id="installBtn" class="outline hidden">Instalar app</button></header>
+<main>
+<section class="hero">
+  <div class="eyebrow">SALDO ACUMULADO</div><div id="balance" class="balance">00h00</div>
+  <div id="balanceStatus" class="status">Sem registros</div>
+  <div class="stats"><div><small>Créditos</small><b id="credits">00h00</b></div><div><small>Débitos</small><b id="debits">00h00</b></div><div><small>Dias registrados</small><b id="days">0</b></div></div>
+</section>
+<section class="card">
+ <div class="section-title"><div><h2>Registrar ponto</h2><p>Informe ou fotografe seu comprovante.</p></div><span class="pill">Seg–Sex</span></div>
+ <div class="fields">
+  <label>Data<input type="date" id="date"></label>
+  <label>Entrada<input type="time" id="entry" value="06:30"></label>
+  <label>Saída<input type="time" id="exit" value="16:48"></label>
+  <label>Jornada prevista<select id="target"><option value="480">8 horas</option><option value="360">6 horas</option><option value="528">8h48</option></select></label>
+ </div>
+ <div class="note">Pausas de 7 min pela manhã + 7 min à tarde já estão incluídas na jornada informada. Não serão descontadas novamente.</div>
+ <div class="actions"><button id="calcBtn">Calcular e salvar</button><label class="upload">📷 Ler comprovante<input id="photo" type="file" accept="image/*" capture="environment" hidden></label></div>
+ <div id="preview" class="preview hidden"></div>
+ <div id="message" role="status" class="message"></div>
+</section>
+<section class="card">
+ <div class="section-title"><div><h2>Histórico</h2><p>Seus registros neste aparelho.</p></div><button id="exportBtn" class="outline small">Exportar backup</button></div>
+ <div id="history" class="history"><div class="empty">Ainda não há registros. Adicione seu primeiro dia de trabalho.</div></div>
+</section>
+<section class="card">
+ <h2>Configurações da jornada</h2>
+ <div class="settings">
+  <div><small>Horário habitual</small><b>06:30 – 16:48</b></div>
+  <div><small>Pausas internas</small><b>14 minutos (incluídas)</b></div>
+  <div><small>Jornada prevista padrão</small><b>8h por dia</b></div>
+  <div><small>Semana</small><b>Segunda a sexta</b></div>
+ </div>
+ <p class="fine">O saldo é uma estimativa matemática. A validade para compensação depende do acordo de banco de horas, da escala e das regras da empresa. Confira feriados, faltas, ajustes e autorizações com o RH.</p>
+ <div class="actions"><label class="upload secondary">Restaurar backup<input id="restore" type="file" accept="application/json" hidden></label><button id="clearBtn" class="danger">Apagar todos os dados</button></div>
+</section>
+<footer>Meu Banco de Horas AI · Versão 1.0 · Dados armazenados neste aparelho</footer>
+</main>
+<script src="app.js"></script>
+</body></html>
